@@ -24,7 +24,7 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 # create folder 
 New-Item -Path $repo -ItemType Directory
 
-for ($i = 0; $i -lt 10; $i++) { # TODO: change to 100
+for ($i = 0; $i -lt 100; $i++) { 
     # create new file 
     New-Item $repo/blob$i.txt -ItemType File
     Set-Content $repo/blob$i.txt 'hello from blob'

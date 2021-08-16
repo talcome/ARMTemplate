@@ -1,4 +1,11 @@
-$rg = 'my-resource-group'
-New-AzResourceGroup -Name $rg -Location eastus -Force
+$rg="my-resource-group"
+$location="eastus"
 
-New-AzResourceGroupDeployment -Name 'azuredeploy' -ResourceGroupName $rg -TemplateFile 'mynewdevstorage.json'
+New-AzResourceGroup -Name $rg -Location $location -Force
+
+New-AzResourceGroupDeployment `
+    -Name "new-deploy" `
+    -ResourceGroupName $rg `
+    -TemplateFile "storage_template.json" `
+    -storageName 'myolddevstorage' `
+    -

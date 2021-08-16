@@ -2,10 +2,10 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "deploymentPrefix": {
+    "storageName": {
       "type": "string",
       "minLength": 3,
-      "maxLength": 8
+      "maxLength": 24
     },
     "storageAccountType": {
       "type": "string",
@@ -33,13 +33,15 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2019-04-01",
-      "name": "myolddevstorage",
+      "name": "[parameters('storageName')]",
       "location": "[parameters('location')]",
       "kind": "StorageV2",
       "sku": {
         "name": "[parameters('storageAccountType')]"
       },
-      "properties": {}
+      "properties": {
+        "accessTier": "Hot"
+      }
     }
   ],
   "outputs": {}
